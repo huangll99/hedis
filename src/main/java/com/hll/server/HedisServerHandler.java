@@ -44,8 +44,8 @@ public class HedisServerHandler extends SimpleChannelInboundHandler<RequestComma
   public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
     if (cause instanceof IOException){
       String message = cause.getMessage();
-      if (message!=null && "Connection reset by peer".equals(message)){
-        logger.warn("Client closed!",cause);
+      if (message!=null && "远程主机强迫关闭了一个现有的连接。".equals(message)){
+        logger.warn("Client closed!");
       }else {
         logger.error("出错，关闭连接",cause);
       }

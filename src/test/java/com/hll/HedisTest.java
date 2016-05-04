@@ -18,6 +18,7 @@ public class HedisTest {
       System.out.println(hello);
     }*/
 
-    jedis.incrBy("hello",5);
+    Long hello = jedis.incrBy("hello", 5);
+    System.out.println(hello);
   }
 }

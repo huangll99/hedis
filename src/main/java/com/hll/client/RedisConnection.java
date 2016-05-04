@@ -29,18 +29,18 @@ public class RedisConnection {
   }
 
   public void write(RequestCommand request) {
-    /*try {
+    try {
       this.semaphore.acquire();
     } catch (InterruptedException e) {
       logger.warn("can't be here", e);
       return;
-    }*/
+    }
     this.channel.write(request);
   }
 
 
   public void release() {
-    //this.semaphore.release();
+    this.semaphore.release();
   }
 
   public void addCallback(){
