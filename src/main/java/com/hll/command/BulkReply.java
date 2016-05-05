@@ -1,5 +1,6 @@
 package com.hll.command;
 
+import com.hll.protocal.ProtoUtil;
 import io.netty.buffer.ByteBuf;
 
 /**
@@ -24,6 +25,9 @@ public class BulkReply extends CommonRedisReply {
 
   @Override
   public void doEncode(ByteBuf out) {
-
+    out.writeBytes(ProtoUtil.convertIntToByteArray(length));
+    writeCRLF(out);
+    out.writeBytes(value);
+    writeCRLF(out);
   }
 }

@@ -5,7 +5,7 @@ import io.netty.buffer.ByteBuf;
 /**
  * Created by hll on 2016/5/3.
  */
-public class ErrorReply extends CommonRedisReply{
+public class ErrorReply extends CommonRedisReply {
 
   public ErrorReply() {
     super(Type.ERROR);
@@ -13,11 +13,12 @@ public class ErrorReply extends CommonRedisReply{
 
   public ErrorReply(byte[] value) {
     this();
-    this.value=value;
+    this.value = value;
   }
 
   @Override
   public void doEncode(ByteBuf out) {
-
+    out.writeBytes(value);
+    writeCRLF(out);
   }
 }

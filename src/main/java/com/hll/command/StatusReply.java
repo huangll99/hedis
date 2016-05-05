@@ -14,11 +14,12 @@ public class StatusReply extends CommonRedisReply {
 
   public StatusReply(byte[] value) {
     this();
-    this.value=value;
+    this.value = value;
   }
 
   @Override
   public void doEncode(ByteBuf out) {
-
+    out.writeBytes(value);
+    writeCRLF(out);
   }
 }
